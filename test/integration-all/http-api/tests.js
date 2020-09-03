@@ -90,13 +90,7 @@ describe('HTTP API Integration Test', function() {
               ],
             },
             other: {
-              events: [
-                {
-                  httpApi: {
-                    timeout: 1,
-                  },
-                },
-              ],
+              timeout: 1,
             },
           },
         }),
@@ -149,7 +143,7 @@ describe('HTTP API Integration Test', function() {
       const testEndpoint = `${endpoint}/bar/timeout`;
 
       const response = await fetch(testEndpoint, { method: 'GET' });
-      expect(response.status).to.equal(503);
+      expect(response.status).to.equal(500);
     });
 
     it('should support CORS when indicated', async () => {
